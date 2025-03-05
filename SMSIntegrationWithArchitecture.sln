@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIntegration.API", "SMSIntegration.API\SMSIntegration.API.csproj", "{769EEC3D-F3E2-4C03-B0E5-66D01971DDF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{75A48CF5-8DE3-4A0F-99B3-06B945ADCFE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIntegration.Application", "SMSIntegration.Application\SMSIntegration.Application.csproj", "{EB4198B4-8245-4B3C-ABBF-80303C2F6E57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B55E0B02-8EF5-436F-BD11-C23E8ADD8DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIntegration.Domain", "SMSIntegration.Domain\SMSIntegration.Domain.csproj", "{620CC5C9-D0D6-40E3-806A-BA906DECCDB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BC2EB93D-AD4B-4891-8BBA-3516FBD10DB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSIntegration.Infrastructure", "SMSIntegration.Infrastructure\SMSIntegration.Infrastructure.csproj", "{D75733C0-225D-4194-8E29-D6DA0209BC7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{769EEC3D-F3E2-4C03-B0E5-66D01971DDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769EEC3D-F3E2-4C03-B0E5-66D01971DDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769EEC3D-F3E2-4C03-B0E5-66D01971DDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769EEC3D-F3E2-4C03-B0E5-66D01971DDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4198B4-8245-4B3C-ABBF-80303C2F6E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4198B4-8245-4B3C-ABBF-80303C2F6E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4198B4-8245-4B3C-ABBF-80303C2F6E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4198B4-8245-4B3C-ABBF-80303C2F6E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{620CC5C9-D0D6-40E3-806A-BA906DECCDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{620CC5C9-D0D6-40E3-806A-BA906DECCDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{620CC5C9-D0D6-40E3-806A-BA906DECCDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{620CC5C9-D0D6-40E3-806A-BA906DECCDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D75733C0-225D-4194-8E29-D6DA0209BC7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D75733C0-225D-4194-8E29-D6DA0209BC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D75733C0-225D-4194-8E29-D6DA0209BC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D75733C0-225D-4194-8E29-D6DA0209BC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB4198B4-8245-4B3C-ABBF-80303C2F6E57} = {75A48CF5-8DE3-4A0F-99B3-06B945ADCFE5}
+		{620CC5C9-D0D6-40E3-806A-BA906DECCDB0} = {B55E0B02-8EF5-436F-BD11-C23E8ADD8DEA}
+		{D75733C0-225D-4194-8E29-D6DA0209BC7D} = {BC2EB93D-AD4B-4891-8BBA-3516FBD10DB0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1737422B-AC9C-4529-87F2-60DEE73EFD47}
+	EndGlobalSection
+EndGlobal
