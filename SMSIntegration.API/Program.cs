@@ -26,7 +26,25 @@ builder.Services.AddScoped<ISmsService, SmsService>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(SendSmsCommand).Assembly));
 
 // Register Background Service
-builder.Services.AddHostedService<SmsBackgroundService>();
+//builder.Services.AddHostedService<SmsBackgroundService>();
+builder.Services.AddHangfire(config =>
+  config
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UseSqlServerStorage(
+      builder.Configuration.GetConnectionString("DefaultConnection"),
+      new SqlServerStorageOptions
+      {
+          CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+          SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+          QueuePollInterval = TimeSpan.FromSeconds(15),
+          UseRecommendedIsolationLevel = true,
+          DisableGlobalLocks = true
+      }
+    )
+);
+builder.Services.AddHangfireServer();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -46,5 +64,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHangfireDashboard("/hangfire");
 
 app.Run();
