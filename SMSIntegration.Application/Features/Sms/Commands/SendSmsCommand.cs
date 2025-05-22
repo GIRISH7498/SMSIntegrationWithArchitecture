@@ -15,11 +15,13 @@ namespace SMSIntegration.Application.Features.Sms.Commands
         {
             private readonly ISmsLogRepository _smsLogRepository;
             private readonly ISmsService _smsService;
+            private readonly IBackgroundJobClient _jobs;
 
-            public SendSmsCommandHandler(ISmsLogRepository smsLogRepository, ISmsService smsService)
+            public SendSmsCommandHandler(ISmsLogRepository smsLogRepository, ISmsService smsService, IBackgroundJobClient jobs)
             {
                 _smsLogRepository = smsLogRepository;
                 _smsService = smsService;
+                 _jobs = jobs;
             }
 
             public async Task<bool> Handle(SendSmsCommand request, CancellationToken cancellationToken)
@@ -39,9 +41,21 @@ namespace SMSIntegration.Application.Features.Sms.Commands
                 await _smsLogRepository.AddSmsLogAsync(smsLog);
                 await _smsLogRepository.SaveChangesAsync();
 
-                if (!request.IsScheduled)
+                if (request.IsScheduled && request.ScheduledTime.HasValue)
                 {
-                    return await _smsService.SendSmsNow(smsLog);
+                    var delay = request.ScheduledTime.Value - DateTime.UtcNow;
+                    if (delay < TimeSpan.Zero) delay = TimeSpan.Zero;
+                
+                    _jobs.Schedule<ISmsService>(
+                      svc => svc.SendSmsNow(smsLog),
+                      delay
+                    );
+                }
+                else
+                {
+                    _jobs.Enqueue<ISmsService>(
+                      svc => svc.SendSmsNow(smsLog)
+                    );
                 }
 
                 return true;
